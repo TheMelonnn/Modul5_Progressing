@@ -8,6 +8,7 @@ import 'package:module_app/presentation/pages/mybook/Mybook.dart';
 import 'package:module_app/presentation/pages/book/book.dart';
 import 'package:module_app/presentation/pages/favorite/favorite.dart';
 import 'package:module_app/presentation/pages/home/home.dart';
+import 'package:module_app/presentation/pages/mybook/UpdateDatabase.dart';
 
 import '../../controllers/dashboard_controller.dart';
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:module_app/presentation/controllers/database_controller.dart';
 import 'package:module_app/presentation/controllers/home_controller.dart';
 
 class DashboardController extends GetxController {
@@ -11,6 +12,7 @@ class DashboardController extends GetxController {
   final index = 0.obs;
   final selectedImagePath = ''.obs;
   final homeController = Get.put(HomeController());
+  final databaseController = Get.put(DatabaseController());
 
   @override
   void onInit() {

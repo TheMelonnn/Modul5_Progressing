@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:module_app/presentation/bindings/userlogin.binding.dart';
 import 'package:module_app/presentation/pages/login/userlogin_page.dart';
+import 'package:module_app/presentation/pages/mybook/UpdateDatabase.dart';
 import 'package:module_app/presentation/pages/pages.dart';
 import 'package:module_app/presentation/pages/register/appwrite_register.dart';
 import '../bindings/bindings.dart';
@@ -34,6 +35,9 @@ class AppPage {
     GetPage(name: appwriteLogin,
             page: () => appwriteLoginPage(),
     ),
+    GetPage(name: UpdateDatabase,
+            page: () => UpdateDatabasePage(),
+    ),
   ];
 
   static getLogin() => login;
@@ -43,6 +47,7 @@ class AppPage {
   static getAccount()=> Accounts;
   static getAppwriteRegister ()=>AppwriteRegister;
   static getappwriteLogin() =>appwriteLogin;
+  static getUpdateDatabase() => UpdateDatabase;
 
   static String login = '/';
   static String dashboard = '/dashboard';
@@ -51,6 +56,7 @@ class AppPage {
   static String Accounts = '/Accounts';
   static String AppwriteRegister = '/AppwriteRegister';
   static String appwriteLogin = '/appwriteLogin';
+  static String UpdateDatabase = '/UpdateDatabase';
 
   
 }

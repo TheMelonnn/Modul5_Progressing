@@ -38,8 +38,8 @@ class CrudExampleView extends StatelessWidget {
               onPressed: () async {
                 // Read
                 final documentId = 'your_document_id_here';
-                final data = await controller.getDocument(documentId);
-                print('Read: $data');
+                // final data = await controller.getDocument(documentId);
+                // print('Read: $data');
               },
               child: Text('Read'),
             ),

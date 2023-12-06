@@ -1,4 +1,4 @@
-import 'dart:io';
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,99 +13,70 @@ class Mybook extends GetView<DashboardController> {
   final DatabaseController _databasecontroller = Get.put(DatabaseController());
   final TextEditingController _judul = TextEditingController();
   final TextEditingController _deskripsi = TextEditingController();
-  
+
   Mybook({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Upload Buku'),
+        title: const Text('Create Buku'),
+        backgroundColor: const Color(0xff13131b),
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(16),
+          color: const Color(0xff13131b),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Container(
-              //   width: 200,
-              //   height: 200,
-              //   decoration: BoxDecoration(
-              //     border: Border.all(width: 1, color: Colors.grey),
-              //     borderRadius: BorderRadius.circular(10),
-              //   ),
-              //   child: Obx(
-              //     () => controller.tempimagePath.value == ''
-              //         ? Center(
-              //             child: Text(
-              //               'Pilih gambar dari kamera/galeri',
-              //               style: TextStyle(
-              //                 fontSize: 20,
-              //                 color: Colors.grey,
-              //               ),
-              //             ),
-              //           )
-              //         : Image.file(File(controller.tempimagePath.value),
-              //             fit: BoxFit.cover),
-              //   ),
-              // ),
-              // SizedBox(height: 20),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     ElevatedButton(
-              //       onPressed: () {
-              //         controller.getImageCamera2();
-              //       },
-              //       child: Text('Kamera'),
-              //     ),
-              //     SizedBox(width: 20),
-              //     ElevatedButton(
-              //       onPressed: () {
-              //         controller.getImageGallery2();
-              //       },
-              //       child: Text('Galeri'),
-              //     ),
-              //   ],
-              // ),
-              SizedBox(height: 20),
+              const SizedBox(height: 200),
               Container(
                 width: 300,
                 child: TextField(
                   controller: _judul,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Judul',
-                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
                   ),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
                 width: 300,
                 child: TextField(
                   controller: _deskripsi,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Deskripsi',
-                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
                   ),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
                   final title = _judul.text;
                   final description = _deskripsi.text;
 
                   if (title.isNotEmpty && description.isNotEmpty) {
-                    // controller.addBookWithInfo(
-                    //     title, description, controller.tempimagePath.value);
+                    // Reset input fields
+                    titleController.clear();
+                    descriptionController.clear();
 
-                    // // Reset input fields
-                    // titleController.clear();
-                    // descriptionController.clear();
-                    // controller.tempimagePath.value = '';
-                    
                     await _databasecontroller.createDocument({
                       'Judul_Buku': title,
                       'Deskripsi_Buku': description,
@@ -113,23 +84,22 @@ class Mybook extends GetView<DashboardController> {
 
                     // Inform user that the book was uploaded
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                           content:
                               Text('Buku berhasil diupload ke dalam daftar')),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                           content: Text(
                               'Silakan isi semua informasi terlebih dahulu')),
                     );
                   }
                 },
-                child: Text('Upload'),
+                child: const Text('Create'),
               ),
-              SizedBox(height: 20),
-              BookList(controller.bookInfos
-                  .toList()), // Menampilkan daftar buku yang telah diunggah di bawah tombol "Upload"
+              const SizedBox(height: 260),
+              BookList(controller.bookInfos.toList()),
             ],
           ),
         ),
